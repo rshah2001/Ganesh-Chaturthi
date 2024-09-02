@@ -67,16 +67,27 @@
 </head>
 <body>
     <!-- Background music -->
-    <audio autoplay loop>
+    <audio id="background-audio" loop muted>
         <source src="OmGan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
     <div class="invitation-container">
-	<img src="1.JPG" alt="Ganesh Chaturthi Invitation">
+        <img src="1.JPG" alt="Ganesh Chaturthi Invitation">
         <h1>Ganesh Chaturthi</h1>
         <p>You're cordially invited to our Ganesh Chaturthi celebration on September 7th, 8th, and 9th. Join us for a joyous occasion. Let's invoke the blessings of Lord Ganesha together.</p>
         <p class="address">Shah Family <br> Address: D-2405, Omkar Alta Monte, Malad East</p>
     </div>
+
+    <script>
+        // Unmute and play audio after user interaction
+        window.addEventListener('click', () => {
+            const audio = document.getElementById('background-audio');
+            audio.muted = false;
+            if (!audio.playing) {
+                audio.play();
+            }
+        });
+    </script>
 </body>
 </html>
