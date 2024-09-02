@@ -82,16 +82,14 @@
             }).catch(error => {
                 console.log('Audio playback failed:', error);
             });
-            // Remove event listeners after first interaction
-            window.removeEventListener('click', playAudio);
-            window.removeEventListener('scroll', playAudio);
-            window.removeEventListener('mousemove', playAudio);
         }
 
-        // Add event listeners for various interactions
+        // Add multiple event listeners for various interactions
         window.addEventListener('click', playAudio);
         window.addEventListener('scroll', playAudio);
         window.addEventListener('mousemove', playAudio);
+        window.addEventListener('touchstart', playAudio); // For mobile devices
+        window.addEventListener('keypress', playAudio);  // In case user presses any key
     </script>
 </body>
 </html>
