@@ -18,10 +18,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            text-align: center; /* Center align all text */
+            text-align: center;
         }
 
-        /* Container for the invitation */
         .invitation-container {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -33,7 +32,6 @@
             padding: 20px;
         }
 
-        /* Styling for the image */
         img {
             width: 100%;
             height: auto;
@@ -41,22 +39,19 @@
             margin-bottom: 20px;
         }
 
-        /* Title styling */
         h1 {
             font-size: 2.5em;
             color: #b30000;
             margin-bottom: 10px;
         }
 
-        /* Paragraph styling */
         p {
             font-size: 1.2em;
             color: #555;
             margin: 10px 0;
-            line-height: 1.5em; /* Ensure consistent line height */
+            line-height: 1.5em;
         }
 
-        /* Address styling */
         .address {
             font-weight: bold;
             color: #b30000;
@@ -67,7 +62,7 @@
 </head>
 <body>
     <!-- Background music -->
-    <audio id="background-audio" autoplay loop>
+    <audio id="background-audio" loop>
         <source src="OmGan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -80,15 +75,23 @@
     </div>
 
     <script>
-        // Attempt to play the audio after a slight delay
-        window.addEventListener('load', () => {
+        function playAudio() {
             const audio = document.getElementById('background-audio');
-            setTimeout(() => {
-                audio.play().catch(error => {
-                    console.error('Audio autoplay failed:', error);
-                });
-            }, 1000); // 1-second delay
-        });
+            audio.play().then(() => {
+                console.log('Audio started playing');
+            }).catch(error => {
+                console.log('Audio playback failed:', error);
+            });
+            // Remove event listeners after first interaction
+            window.removeEventListener('click', playAudio);
+            window.removeEventListener('scroll', playAudio);
+            window.removeEventListener('mousemove', playAudio);
+        }
+
+        // Add event listeners for various interactions
+        window.addEventListener('click', playAudio);
+        window.addEventListener('scroll', playAudio);
+        window.addEventListener('mousemove', playAudio);
     </script>
 </body>
 </html>
